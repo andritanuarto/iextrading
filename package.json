@@ -1,0 +1,40 @@
+{
+  "name": "iextrading",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-dev": "webpack-dev-server --mode development --open",
+    "start-prod": "webpack-dev-server --mode production --open",
+    "sass-dev": "node-sass --watch scss -o ./dist/css --output-style",
+    "sass-prod": "node-sass scss -o ./dist/css --output-style compressed",
+
+    "dev": "concurrently --kill-others \"npm run start-dev\" \"npm run sass-dev\"",
+    "prod": "concurrently --kill-others \"npm run start-prod\" \"npm run sass-prod\""
+  },
+  "keywords": [],
+  "author": "Andri Tanuarto <andritanuarto@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^2.1.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.5.1"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
+  }
+}
