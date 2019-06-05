@@ -1,11 +1,19 @@
-import React from "react";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '../store';
+import MainContainer from '../containers/main-container';
 
-const App = () => {
-  return (
-    <div className="this is app">
-      <p>React here and there adasdas! sdsd</p>
-    </div>
-  );
-};
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Router>
+          <Route exact path="/" render={() => <MainContainer />} />
+        </Router>
+      </Provider>
+    );
+  }
+}
 
 export default App;
