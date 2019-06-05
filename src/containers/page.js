@@ -1,33 +1,29 @@
 import { connect } from 'react-redux';
-import { marketListHandler } from '../actions/api';
-import { testHandler } from '../actions/ui';
+import { marketListHandler, companyViewHandler } from '../actions/api';
 import Page from '../components/page';
 import axios from 'axios';
 
 const mapStateToProps = (state) => {
   return {
-    ui: state.ui,
     api: state.api
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    testHandler: () => {
-      dispatch(testHandler());
-    },
-
     marketListHandler: () => {
-      const iexapiurl = 'https://api.iextrading.com/1.0/stock/market/list/gainers?displayPercent=true'
+      const iexapiurl = 'https://api.iextrading.com/1.0/stock/market/list/gainers';
       axios.get(iexapiurl).then(response => {
-        const data = response.data.map((datum) => {
-          return datum.symbol;
-        })
-        dispatch(marketListHandler(data));
+        if (response.data.length > 0) {
+          const data = response.data.map((datum) => {
+            return {symbol: datum.symbol, latestPrice: datum.symbol};
+          });
+          dispatch(marketListHandler(data));
+        }
       }).catch((error) => {
         throw(error);
       });
-    }
+    },
   }
 };
 

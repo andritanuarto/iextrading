@@ -6,3 +6,7 @@ export const marketListHandler = (data) => {
     data
   }
 };
+
+export const companyViewHandler = (info) => {
+  console.log(info);
+}

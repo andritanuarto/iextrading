@@ -21,8 +21,8 @@ class Page extends Component {
     const selectMenu = (
       <select className="select-form">
         {
-          api.data.map((datum) => {
-            return (<option key={datum}>{datum}</option>)
+          api.data.map(({symbol}) => {
+            return (<option key={symbol}>{symbol}</option>)
           })
         }
       </select>
@@ -31,7 +31,6 @@ class Page extends Component {
     return (
       <div className="page">
         {selectMenu}
-        <button onClick={() => {this.handleClick()}}>Click me</button>
       </div>
     );
   }
