@@ -1,15 +1,21 @@
 import { API } from '../actions/action-types';
 
 const initialState = {
-  data: [],
-  viewed: null,
+  companies: [],
+  viewedCompany: null
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case API.MARKET_LIST_HANDLER: {
+    case API.SET_MARKET_LIST: {
       return Object.assign({}, state, {
-        data: action.data
+        companies: action.data
+      });
+    }
+
+    case API.SET_SHOW_COMPANY: {
+      return Object.assign({}, state, {
+        viewedCompany: action.data
       });
     }
 
