@@ -2,7 +2,8 @@ import { API } from '../actions/action-types';
 
 const initialState = {
   companies: [],
-  viewedCompany: null
+  viewedCompany: null,
+  marketListType: 'mostactive'
 };
 
 export default (state = initialState, action = {}) => {
@@ -16,6 +17,12 @@ export default (state = initialState, action = {}) => {
     case API.SET_SHOW_COMPANY: {
       return Object.assign({}, state, {
         viewedCompany: action.data
+      });
+    }
+
+    case API.HANDLE_MARKET_LIST: {
+      return Object.assign({}, state, {
+        marketListType: action.mode
       });
     }
 
