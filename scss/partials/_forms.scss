@@ -1,0 +1,25 @@
+select {
+  display: block;
+  color: $color-black;
+  background-color: $color-white;
+	outline: 1px inset $color-white;
+	outline-offset: -1px;
+  height: 30px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+	border: 0;
+}
+
+button {
+  height: 25px;
+  cursor: pointer;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 3px;
+  color: $color-white;
+  background: $color-blue-bayoux;
+  transition: 0.5s background;
+  &:hover {
+    background: lighten($color-blue-bayoux, 5%);
+  }
+}
