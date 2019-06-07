@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getMarketList, handleSelectSymbol } from '../actions/api';
+import { getMarketList, handleSelectSymbol, handleErrorMessage } from '../actions/api';
 import { handleSearchMode } from '../actions/ui';
 import Page from '../components/page';
 
@@ -20,6 +20,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleSearchMode: () => {
       dispatch(handleSearchMode());
+    },
+    handleErrorMessage: (keyword) => {
+      dispatch(handleErrorMessage(keyword));
+    },
+    handleResetError: () => {
+      dispatch(handleResetError());
     }
   }
 };

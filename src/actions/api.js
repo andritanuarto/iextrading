@@ -29,8 +29,17 @@ export const getCompanyDetail = (symbol) => {
       }));
       dispatch(handleLoading(false));
     }).catch((error) => {
-      throw(error);
+      console.log(error);
+      dispatch(handleLoading(false));
+      dispatch(handleErrorMessage('Cannot find the symbol that you\'re looking for'));
     });
+  }
+}
+
+export const handleErrorMessage = (msg) => {
+  return {
+    type: API.HANDLE_ERROR_MESSAGE,
+    msg
   }
 }
 

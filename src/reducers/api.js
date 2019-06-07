@@ -4,7 +4,8 @@ const initialState = {
   companies: [],
   viewedCompany: null,
   marketListType: 'mostactive',
-  isLoading: false
+  isLoading: false,
+  errorMessage: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -24,6 +25,12 @@ export default (state = initialState, action = {}) => {
     case API.HANDLE_LOADING: {
       return Object.assign({}, state, {
         isLoading: action.loadingState
+      });
+    }
+
+    case API.HANDLE_ERROR_MESSAGE: {
+      return Object.assign({}, state, {
+        errorMessage: action.msg
       });
     }
 

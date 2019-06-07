@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
@@ -14,11 +14,14 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <input
-        onKeyDown={this.searchHandler}
-        className="controls__text"
-        type="text" placeholder="Search Symbol eg: aapl"
-      />
+      <Fragment>
+        <input
+          onKeyDown={this.searchHandler}
+          className="controls__text"
+          type="text"
+          placeholder="Search Symbol eg: aapl"
+        />
+      </Fragment>
     );
   }
 }

@@ -2,13 +2,13 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CompanyDetail from './company-detail';
 import SearchBar from '../containers/search-bar';
-import Loading from './loading';
 
 class Page extends Component {
   static propTypes = {
     getMarketList: PropTypes.func.isRequired,
     handleSelectSymbol: PropTypes.func.isRequired,
     handleSearchMode: PropTypes.func.isRequired,
+    handleErrorMessage: PropTypes.func.isRequired,
     api: PropTypes.object.isRequired,
     ui: PropTypes.object.isRequired,
   };
@@ -30,6 +30,7 @@ class Page extends Component {
   backToDefaultHandler = () => {
     this.props.getMarketList(this.props.api.marketListType);
     this.props.handleSearchMode();
+    this.props.handleErrorMessage(null);
   }
 
   searchModeHandler = () => {
@@ -38,7 +39,7 @@ class Page extends Component {
 
   render() {
     const { api, ui } =  this.props;
-    const { companies, viewedCompany, isLoading } = api;
+    const { companies, viewedCompany, isLoading, errorMessage } = api;
     const { searchMode } = ui;
 
     let companyWithStockPrice = companies.length > 0 && viewedCompany !== null
@@ -52,16 +53,23 @@ class Page extends Component {
         })
       : null;
 
+    const marketListTypes = [
+      {label: 'Most Active', value: 'mostactive'},
+      {label: 'Gainers', value: 'gainers'},
+      {label: 'Losers', value: 'losers'},
+      {label: 'IEX Volume', value: 'iexvolume'},
+      {label: 'In Focus', value: 'infocus'},
+    ]
+
     const selectMarketListDropdown = (
       <select className="controls__select" onChange={this.marketListHandler}>
-        <option value="mostactive">Most Active</option>
-        <option value="gainers">Gainers</option>
-        <option value="losers">Losers</option>
-        <option value="iexvolume">IEX Volume</option>
-        <option value="iexpercent">IEX Percent</option>
-        <option value="infocus">In Focus</option>
+        {marketListTypes.map((type) => {
+          return (
+            <option value={type.value}>{type.label}</option>
+          );
+        })}
       </select>
-    )
+    );
 
     const selectSymbolDropdown = (
       <select className="controls__select" onChange={this.selectSymbolHandler}>
@@ -96,6 +104,7 @@ class Page extends Component {
         <div className="controls">
           {!searchMode ? selects : <SearchBar />}
           {searchMode ? backToDefaultBtn : null}
+          {errorMessage ? <div className="error">{errorMessage}</div> : null}
         </div>
         {viewedCompany ?
             <CompanyDetail
