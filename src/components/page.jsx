@@ -39,7 +39,7 @@ class Page extends Component {
 
   render() {
     const { api, ui } =  this.props;
-    const { companies, viewedCompany, isLoading } = api;
+    const { companies, viewedCompany, isLoading, marketListType } = api;
     const { searchMode } = ui;
 
     let companyWithStockPrice = companies.length > 0 && viewedCompany !== null
@@ -65,7 +65,13 @@ class Page extends Component {
       <select className="controls__select" onChange={this.marketListHandler}>
         {marketListTypes.map((type) => {
           return (
-            <option value={type.value} key={type.value}>{type.label}</option>
+            <option
+              value={type.value}
+              key={type.value}
+              selected={marketListType === type.value}
+            >
+              {type.label}
+            </option>
           );
         })}
       </select>
@@ -120,7 +126,10 @@ class Page extends Component {
               description: viewedCompany.description
             }}
           />
-          : null
+          :
+            <div className="company">
+              <div className="error">No info can be displayed. Please select category.</div>
+            </div>
         }
       </div>
     );

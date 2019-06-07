@@ -1,9 +1,10 @@
 import { API } from '../actions/action-types';
+import { CONFIG } from '../config';
 
 const initialState = {
   companies: [],
   viewedCompany: null,
-  marketListType: 'mostactive',
+  marketListType: CONFIG.DEFAULT_MARKET_LIST_TYPE,
   isLoading: false,
   errorMessage: null,
 };

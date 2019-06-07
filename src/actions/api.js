@@ -12,6 +12,9 @@ export const getMarketList = (marketListType) => {
         });
         dispatch(setMarketList(data));
         dispatch(getCompanyDetail(data[0].symbol));
+      } else {
+        dispatch(setMarketList([]));
+        dispatch(getCompanyDetail(null));
       }
     }).catch((error) => {
       throw(error);
@@ -21,25 +24,38 @@ export const getMarketList = (marketListType) => {
 
 export const getCompanyDetail = (symbol) => {
   return (dispatch) => {
+
     dispatch(handleLoading(true));
     dispatch(handleErrorMessage(null));
-    return axios.get(`${CONFIG.API_IEX_END_POINT}/${symbol}/company`).then((response) => {
-      const { symbol, description } = response.data;
-      dispatch(setShowCompany({
-        symbol,
-        description
-      }));
-      dispatch(handleLoading(false));
-    }).catch((error) => {
-      console.log(error);
-      dispatch(handleLoading(false));
-      console.log(symbol);
-      if (isEmpty(symbol)) {
-        dispatch(handleErrorMessage('Please put a keyword'));
-      } else {
-        dispatch(handleErrorMessage('Cannot find the symbol that you\'re looking for'));
-      }
-    });
+
+    if (symbol !== null) {
+      return axios.get(`${CONFIG.API_IEX_END_POINT}/${symbol}/company`).then((response) => {
+
+        const { symbol, description } = response.data;
+
+        if (symbol) {
+          dispatch(setShowCompany({symbol, description}));
+        } else {
+          dispatch(setShowCompany(null));
+        }
+
+        dispatch(handleLoading(false));
+
+      }).catch((error) => {
+
+        console.log(error);
+
+        dispatch(handleLoading(false));
+        if (isEmpty(symbol)) {
+          dispatch(handleErrorMessage('Please put a keyword'));
+        } else {
+          dispatch(handleErrorMessage('Cannot find the symbol that you\'re looking for'));
+        }
+
+      });
+    }
+
+    return dispatch(setShowCompany(null));
   }
 }
 
