@@ -18,19 +18,26 @@ button, select, input {
   width: 100%;
   max-width: 700px; }
   .page .controls {
-    margin-bottom: 30px; }
+    margin-bottom: 30px;
+    height: 30px; }
     .page .controls__btn, .page .controls__select, .page .controls__text {
       display: inline-block;
       margin-right: 20px; }
+    .page .controls__btn {
+      margin-left: 20px; }
     .page .controls__text {
       width: 200px;
       padding: 0 10px; }
+    .page .controls__separator {
+      height: 25px;
+      border-left: solid 1px #cccccc; }
   .page .company {
     position: relative; }
     .page .company-detail {
       text-shadow: 1px 2px 0px #424d58;
       margin-bottom: 30px; }
       .page .company-detail strong {
+        text-shadow: none;
         display: block;
         margin-bottom: 10px;
         color: #f3b700; }
@@ -60,7 +67,6 @@ input[type="text"] {
   height: 25px;
   color: #000000;
   background-color: #ffffff;
-  height: 30px;
   border-radius: 2px;
   border: solid 1px #cccccc; }
 

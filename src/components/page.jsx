@@ -87,22 +87,27 @@ class Page extends Component {
       <Fragment>
         {selectMarketListDropdown}
         {selectSymbolDropdown}
-        <button className="controls__btn" onClick={this.searchModeHandler}>
-          Search Symbol
-        </button>
       </Fragment>
     );
 
     const backToDefaultBtn = (
       <button className="controls__btn" onClick={this.backToDefaultHandler}>
-        Back
+        Back to Select Menu
       </button>
-    )
+    );
+
+    const searchStockSymbolBtn = (
+      <button className="controls__btn" onClick={this.searchModeHandler}>
+        Search Stock Symbol
+      </button>
+    );
 
     return (
       <div className="page">
         <div className="controls">
           {!searchMode ? selects : <SearchBar />}
+          <span className="controls__separator" />
+          {!searchMode ? searchStockSymbolBtn : null}
           {searchMode ? backToDefaultBtn : null}
           {errorMessage ? <div className="error">{errorMessage}</div> : null}
         </div>

@@ -4,13 +4,21 @@
   max-width: 700px;
   .controls {
     margin-bottom: 30px;
+    height: 30px;
     &__btn, &__select, &__text {
       display: inline-block;
       margin-right: 20px;
     }
+    &__btn {
+      margin-left: 20px;
+    }
     &__text {
       width: 200px;
       padding: 0 10px;
+    }
+    &__separator {
+      height: 25px;
+      border-left: solid 1px $color-silver;
     }
   }
   .company {
@@ -19,6 +27,7 @@
       text-shadow: 1px 2px 0px rgb(66, 77, 88);
       margin-bottom: 30px;
       strong {
+        text-shadow: none;
         display: block;
         margin-bottom: 10px;
         color: $color-di-seria;
