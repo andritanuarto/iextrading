@@ -80,6 +80,7 @@ class Page extends Component {
             )
           })
         }
+        {companies.length === 0 ? <option>Symbols are not available at the moment</option> : null}
       </select>
     );
 
