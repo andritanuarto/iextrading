@@ -21,6 +21,7 @@ export const getMarketList = (marketListType) => {
 export const getCompanyDetail = (symbol) => {
   return (dispatch) => {
     dispatch(handleLoading(true));
+    dispatch(handleErrorMessage(null));
     return axios.get(`${CONFIG.API_IEX_END_POINT}/${symbol}/company`).then((response) => {
       const { symbol, description } = response.data;
       dispatch(setShowCompany({

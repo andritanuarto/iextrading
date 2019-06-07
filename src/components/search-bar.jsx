@@ -1,29 +1,40 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 
-class SearchBar extends Component {
-  static propTypes = {
-    handleSearch: PropTypes.func.isRequired,
-  };
+const SearchBar = (props) => {
+  const [searchKeyword, setsearchKeyword] = useState({
+    keywords: '',
+  });
 
-  searchHandler = (e) => {
+  const{ keywords } = searchKeyword;
+
+  const searchHandler = (e) => {
     if (e.key === 'Enter') {
-      this.props.handleSearch(e.target.value.toLowerCase().trim());
+      props.handleSearch(keywords.toLowerCase().trim());
     }
   }
 
-  render() {
-    return (
-      <Fragment>
-        <input
-          onKeyDown={this.searchHandler}
-          className="controls__text"
-          type="text"
-          placeholder="Search Symbol eg: aapl"
-        />
-      </Fragment>
-    );
-  }
+  const handleKeywordChange = (e) => setsearchKeyword({
+    ...searchKeyword,
+    keywords: e.target.value
+  })
+
+  return (
+    <Fragment>
+      <input
+        className="controls__text"
+        onKeyDown={searchHandler}
+        onChange={handleKeywordChange}
+        type="text"
+        value={keywords}
+        placeholder="Search Symbol eg: aapl"
+      />
+    </Fragment>
+  );
+}
+
+SearchBar.propTypes = {
+  handleSearch: PropTypes.func
 }
 
 export default SearchBar;
