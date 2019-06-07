@@ -47,7 +47,7 @@ class CompanyDetail extends Component {
       >
         <Loading/>
       </ReactCSSTransitionGroup>
-    )
+    );
 
     return (
       <div className="company">
