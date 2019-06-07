@@ -1,14 +1,17 @@
 html, body {
   min-width: 0;
-}
-
-html, body {
+  margin: 0;
   width: 100%;
   height: 100%;
-  margin: 0;
-  display: flex;
 }
 
 body {
-  color: $black;
+  font-size: 14px;
+  color: $color-white;
+  font-family: $font-default;
+  background: $color-limed-spruce;
+}
+
+button, select, input {
+  outline: 0;
 }
