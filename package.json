@@ -6,10 +6,12 @@
   "scripts": {
     "start-dev": "webpack-dev-server --mode development --open",
     "start-prod": "webpack-dev-server --mode production --open",
-    "sass-dev": "node-sass --watch scss -o ./dist/css --output-style expanded",
-    "sass-prod": "node-sass --watch scss -o ./dist/css --output-style compressed",
-    "dev": "concurrently --kill-others \"npm run sass-dev\" \"npm run start-dev\"",
-    "prod": "concurrently --kill-others \"npm run sass-prod\" \"npm run start-prod\""
+    "build-sass-dev": "node-sass scss -o ./dist/css --output-style compact --source-map true",
+    "watch-sass-dev": "node-sass --watch scss -o ./dist/css --output-style compact --source-map true",
+    "build-sass-prod": "node-sass scss -o ./dist/css --output-style compressed",
+
+    "dev": "npm run build-sass-dev & watch-sass-dev & npm run start-dev",
+    "prod": "npm run build-sass-prod & npm run start-prod"
   },
   "keywords": [],
   "author": "Andri Tanuarto <andritanuarto@gmail.com>",
