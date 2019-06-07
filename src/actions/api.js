@@ -1,9 +1,10 @@
 import { API } from './action-types';
 import axios from 'axios';
+import { CONFIG } from '../config';
 
 export const getMarketList = (marketListType) => {
   return (dispatch) => {
-    return axios.get(`https://api.iextrading.com/1.0/stock/market/list/${marketListType}`).then((response) => {
+    return axios.get(`${CONFIG.API_IEX_END_POINT}/market/list/${marketListType}`).then((response) => {
       if (response.data.length > 0) {
         const data = response.data.map((datum) => {
           return { symbol: datum.symbol, latestPrice: datum.latestPrice };
@@ -19,17 +20,36 @@ export const getMarketList = (marketListType) => {
 
 export const getCompanyDetail = (symbol) => {
   return (dispatch) => {
-    return axios.get(`https://api.iextrading.com/1.0/stock/${symbol}/company`).then((response) => {
-      dispatch(setShowCompany(response.data));
+    dispatch(handleLoading(true));
+    return axios.get(`${CONFIG.API_IEX_END_POINT}/${symbol}/company`).then((response) => {
+      const { symbol, description } = response.data;
+      dispatch(setShowCompany({
+        symbol,
+        description
+      }));
+      dispatch(handleLoading(false));
     }).catch((error) => {
       throw(error);
     });
   }
 }
 
+export const handleLoading = (loadingState) => {
+  return {
+    type: API.HANDLE_LOADING,
+    loadingState
+  }
+}
+
 export const handleSelectSymbol = (symbol) => {
   return (dispatch) => {
     dispatch(getCompanyDetail(symbol));
+  }
+}
+
+export const handleSearch = (keyword) => {
+  return (dispatch) => {
+    dispatch(getCompanyDetail(keyword));
   }
 }
 
@@ -44,12 +64,5 @@ export const setShowCompany = (data) => {
   return {
     type: API.SET_SHOW_COMPANY,
     data
-  }
-}
-
-export const handleMarketList = (mode) => {
-  return {
-    type: API.HANDLE_MARKET_LIST,
-    mode
   }
 }

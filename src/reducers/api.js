@@ -3,7 +3,8 @@ import { API } from '../actions/action-types';
 const initialState = {
   companies: [],
   viewedCompany: null,
-  marketListType: 'mostactive'
+  marketListType: 'mostactive',
+  isLoading: false
 };
 
 export default (state = initialState, action = {}) => {
@@ -20,9 +21,9 @@ export default (state = initialState, action = {}) => {
       });
     }
 
-    case API.HANDLE_MARKET_LIST: {
+    case API.HANDLE_LOADING: {
       return Object.assign({}, state, {
-        marketListType: action.mode
+        isLoading: action.loadingState
       });
     }
 

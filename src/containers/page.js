@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getMarketList, handleSelectSymbol, handleMarketList } from '../actions/api';
+import { getMarketList, handleSelectSymbol } from '../actions/api';
 import { handleSearchMode } from '../actions/ui';
 import Page from '../components/page';
 
@@ -20,14 +20,8 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleSearchMode: () => {
       dispatch(handleSearchMode());
-    },
-    handleMarketList: (listMode) => {
-      dispatch(handleMarketList(listMode));
     }
   }
 };
-
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page);
