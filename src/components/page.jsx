@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import CompanyDetail from './company-detail';
+import CompanyDetail from '../containers/company-detail';
 import SearchBar from '../containers/search-bar';
 
 class Page extends Component {
@@ -39,7 +39,7 @@ class Page extends Component {
 
   render() {
     const { api, ui } =  this.props;
-    const { companies, viewedCompany, isLoading, errorMessage } = api;
+    const { companies, viewedCompany, isLoading } = api;
     const { searchMode } = ui;
 
     let companyWithStockPrice = companies.length > 0 && viewedCompany !== null
@@ -92,7 +92,7 @@ class Page extends Component {
 
     const backToDefaultBtn = (
       <button className="controls__btn" onClick={this.backToDefaultHandler}>
-        Back to Select Menu
+        Back
       </button>
     );
 
@@ -109,7 +109,6 @@ class Page extends Component {
           <div className="controls__separator" />
           {!searchMode ? searchStockSymbolBtn : null}
           {searchMode ? backToDefaultBtn : null}
-          {errorMessage ? <div className="error">{errorMessage}</div> : null}
         </div>
         {viewedCompany ?
             <CompanyDetail

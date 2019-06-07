@@ -1,6 +1,7 @@
 import { API } from './action-types';
 import axios from 'axios';
 import { CONFIG } from '../config';
+import { isEmpty } from 'lodash';
 
 export const getMarketList = (marketListType) => {
   return (dispatch) => {
@@ -32,22 +33,13 @@ export const getCompanyDetail = (symbol) => {
     }).catch((error) => {
       console.log(error);
       dispatch(handleLoading(false));
-      dispatch(handleErrorMessage('Cannot find the symbol that you\'re looking for'));
+      console.log(symbol);
+      if (isEmpty(symbol)) {
+        dispatch(handleErrorMessage('Please put a keyword'));
+      } else {
+        dispatch(handleErrorMessage('Cannot find the symbol that you\'re looking for'));
+      }
     });
-  }
-}
-
-export const handleErrorMessage = (msg) => {
-  return {
-    type: API.HANDLE_ERROR_MESSAGE,
-    msg
-  }
-}
-
-export const handleLoading = (loadingState) => {
-  return {
-    type: API.HANDLE_LOADING,
-    loadingState
   }
 }
 
@@ -69,6 +61,20 @@ export const setMarketList = (data) => {
     data
   }
 };
+
+export const handleErrorMessage = (msg) => {
+  return {
+    type: API.HANDLE_ERROR_MESSAGE,
+    msg
+  }
+}
+
+export const handleLoading = (loadingState) => {
+  return {
+    type: API.HANDLE_LOADING,
+    loadingState
+  }
+}
 
 export const setShowCompany = (data) => {
   return {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Loading from './loading';
 
@@ -10,10 +10,11 @@ class CompanyDetail extends Component {
 
   render() {
     const { companyInfo, isLoading } = this.props;
+    const { api } =  this.props;
+    const { errorMessage } = api;
 
-    return (
-      <div className="company">
-        {isLoading ? <Loading/> : null}
+    const companyDetail = (
+      <Fragment>
         <div className="company-detail">
           <strong>Symbol</strong>
           {companyInfo.symbol}
@@ -26,6 +27,13 @@ class CompanyDetail extends Component {
           <strong>Description</strong>
           {`${companyInfo.description}`}
         </div>
+      </Fragment>
+    );
+
+    return (
+      <div className="company">
+        {isLoading ? <Loading/> : null}
+        {errorMessage === null ?  companyDetail : <div className="error">{errorMessage}</div>}
       </div>
     );
   }
