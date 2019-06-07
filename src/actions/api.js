@@ -49,7 +49,7 @@ export const getCompanyDetail = (symbol) => {
         if (isEmpty(symbol)) {
           dispatch(handleErrorMessage('Please put a keyword'));
         } else {
-          dispatch(handleErrorMessage('Cannot find the symbol that you\'re looking for'));
+          dispatch(handleErrorMessage('Cannot find the symbol'));
         }
 
       });

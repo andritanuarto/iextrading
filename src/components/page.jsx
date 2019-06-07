@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import InlineSVG from 'svg-inline-react';
+import { SVG } from '../svg';
 import CompanyDetail from '../containers/company-detail';
 import SearchBar from '../containers/search-bar';
 
@@ -54,24 +56,18 @@ class Page extends Component {
       : null;
 
     const marketListTypes = [
+      {label: 'In Focus', value: 'infocus'},
       {label: 'Most Active', value: 'mostactive'},
       {label: 'Gainers', value: 'gainers'},
       {label: 'Losers', value: 'losers'},
       {label: 'IEX Volume', value: 'iexvolume'},
-      {label: 'In Focus', value: 'infocus'},
-    ]
+    ];
 
     const selectMarketListDropdown = (
-      <select className="controls__select" onChange={this.marketListHandler}>
+      <select defaultValue={marketListType} className="controls__select" onChange={this.marketListHandler}>
         {marketListTypes.map((type) => {
           return (
-            <option
-              value={type.value}
-              key={type.value}
-              selected={marketListType === type.value}
-            >
-              {type.label}
-            </option>
+            <option key={type.value}>{type.label}</option>
           );
         })}
       </select>
@@ -112,6 +108,13 @@ class Page extends Component {
     return (
       <div className="page">
         <div className="controls">
+          <InlineSVG
+            className={searchMode ? 'iex-logo iex-logo-pointed' : 'iex-logo'}
+            onClick={searchMode ? this.backToDefaultHandler : null}
+            src={SVG.SVG_IEX_LOGO}
+            raw width="25"
+            height="25"
+          />
           {!searchMode ? selects : <SearchBar />}
           <div className="controls__separator" />
           {!searchMode ? searchStockSymbolBtn : null}
@@ -128,7 +131,7 @@ class Page extends Component {
           />
           :
             <div className="company">
-              <div className="error">No info can be displayed. Please select category.</div>
+              <div className="error">No info can be displayed at this time. Please check back later.</div>
             </div>
         }
       </div>

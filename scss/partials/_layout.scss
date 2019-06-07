@@ -20,6 +20,17 @@
       flex-grow: 0;
       flex-shrink: 0;
       z-index: 3;
+      .iex-logo {
+        float: left;
+        margin-right: 50px;
+        transition: 0.5s opacity;
+        &-pointed{
+          cursor: pointer;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
       &__btn, &__select {
         float: left;
         margin-right: 20px;
