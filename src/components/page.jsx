@@ -65,7 +65,7 @@ class Page extends Component {
       <select className="controls__select" onChange={this.marketListHandler}>
         {marketListTypes.map((type) => {
           return (
-            <option value={type.value}>{type.label}</option>
+            <option value={type.value} key={type.value}>{type.label}</option>
           );
         })}
       </select>
