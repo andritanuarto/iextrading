@@ -73,18 +73,18 @@ class Page extends Component {
       </select>
     );
 
-    const selectSymbolDropdown = (
-      <select className="controls__select" onChange={this.selectSymbolHandler}>
+    const selectSymbolDropdown = viewedCompany ? (
+      <select defaultValue={viewedCompany.symbol} className="controls__select" onChange={this.selectSymbolHandler}>
         {
           companies.map(({symbol}) => {
             return (
-              <option key={symbol}>{symbol}</option>
+              <option selected={viewedCompany.symbol === symbol} key={symbol}>{symbol}</option>
             )
           })
         }
         {companies.length === 0 ? <option>Symbols are not available at the moment</option> : null}
       </select>
-    );
+    ) : null;
 
     const selects = (
       <Fragment>

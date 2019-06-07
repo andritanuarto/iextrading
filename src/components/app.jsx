@@ -4,16 +4,14 @@ import { Provider } from 'react-redux';
 import store from '../store';
 import Page from '../containers/page';
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
+const App = () => {
+  return (
+    <Provider store={store}>
         <Router>
           <Route exact path="/" render={() => <Page />} />
         </Router>
       </Provider>
-    );
-  }
+  );
 }
 
 export default App;
