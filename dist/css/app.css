@@ -29,8 +29,10 @@ button, select, input {
       height: 25px;
       padding: 10px 15px;
       border-bottom: solid 1px #4c6e74;
+      background: #333333;
       flex-grow: 0;
-      flex-shrink: 0; }
+      flex-shrink: 0;
+      z-index: 3; }
       #app .page .controls__btn, #app .page .controls__select {
         float: left;
         margin-right: 20px; }
@@ -155,3 +157,21 @@ input[type="text"] {
 .error {
   font-size: 12px;
   font-style: italic; }
+
+.fade-enter {
+  opacity: 0.01; }
+  .fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in; }
+
+.fade-leave {
+  opacity: 1; }
+  .fade-leave.fade-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in; }
+
+.fade-appear {
+  opacity: 0.01; }
+  .fade-appear.fade-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in; }

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Loading from './loading';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class CompanyDetail extends Component {
   static propTypes = {
@@ -14,7 +15,13 @@ class CompanyDetail extends Component {
     const { errorMessage } = api;
 
     const companyDetail = (
-      <Fragment>
+      <ReactCSSTransitionGroup
+        transitionName="fade"
+        transitionAppear={true}
+        transitionAppearTimeout={500}
+        transitionEnter={false}
+        transitionLeave={false}
+      >
         <div className="company-detail">
           <strong>Symbol</strong>
           {companyInfo.symbol}
@@ -27,12 +34,24 @@ class CompanyDetail extends Component {
           <strong>Description</strong>
           {`${companyInfo.description}`}
         </div>
-      </Fragment>
+      </ReactCSSTransitionGroup>
     );
+
+    const loadingComponent = (
+      <ReactCSSTransitionGroup
+        transitionName="fade"
+        transitionAppear={true}
+        transitionAppearTimeout={500}
+        transitionEnter={false}
+        transitionLeave={false}
+      >
+        <Loading/>
+      </ReactCSSTransitionGroup>
+    )
 
     return (
       <div className="company">
-        {isLoading ? <Loading/> : null}
+        {isLoading ? loadingComponent : null}
         {errorMessage === null ?  companyDetail : <div className="error">{errorMessage}</div>}
       </div>
     );

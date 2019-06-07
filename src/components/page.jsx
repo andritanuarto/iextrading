@@ -111,14 +111,14 @@ class Page extends Component {
           {searchMode ? backToDefaultBtn : null}
         </div>
         {viewedCompany ?
-            <CompanyDetail
-              isLoading={isLoading}
-              companyInfo={{
-                symbol: viewedCompany.symbol,
-                latestPrice: companyWithStockPrice ? `${companyWithStockPrice.latestPrice} USD` : 'N/A',
-                description: viewedCompany.description
-              }}
-            />
+          <CompanyDetail
+            isLoading={isLoading}
+            companyInfo={{
+              symbol: viewedCompany.symbol,
+              latestPrice: companyWithStockPrice ? `${companyWithStockPrice.latestPrice} USD` : 'N/A',
+              description: viewedCompany.description
+            }}
+          />
           : null
         }
       </div>

@@ -16,8 +16,10 @@
       height: 25px;
       padding: 10px 15px;
       border-bottom: solid 1px lighten($color-blue-bayoux, 3%);
+      background: $mine-shaft;
       flex-grow: 0;
       flex-shrink: 0;
+      z-index: 3;
       &__btn, &__select {
         float: left;
         margin-right: 20px;
