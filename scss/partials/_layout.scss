@@ -1,36 +1,58 @@
-.page {
+#app {
   padding: 15px;
-  width: 100%;
-  max-width: 700px;
-  .controls {
-    margin-bottom: 30px;
-    height: 30px;
-    &__btn, &__select, &__text {
-      display: inline-block;
-      margin-right: 20px;
+  .page {
+    width: 100%;
+    max-width: 700px;
+    .container {
+      position: relative;
+      float: left;
+      &-search {
+        margin-right: 20px;
+        overflow: hidden;
+      }
     }
-    &__btn {
-      margin-left: 20px;
-    }
-    &__text {
-      width: 200px;
-      padding: 0 10px;
-    }
-    &__separator {
-      height: 25px;
-      border-left: solid 1px $color-silver;
-    }
-  }
-  .company {
-    position: relative;
-    &-detail {
-      text-shadow: 1px 2px 0px rgb(66, 77, 88);
+    .controls {
       margin-bottom: 30px;
-      strong {
-        text-shadow: none;
-        display: block;
-        margin-bottom: 10px;
-        color: $color-di-seria;
+      height: 30px;
+      &__btn, &__select {
+        float: left;
+        margin-right: 20px;
+      }
+      &__btn {
+        margin-left: 20px;
+        &-search {
+          position: absolute;
+          right: 0;
+          margin: 0;
+          height: 28px;
+          border-radius: 0;
+        }
+      }
+      &__text {
+        float: left;
+        width: 150px;
+        padding: 0 10px;
+        &-search {
+          padding-right: 60px;
+        }
+      }
+      &__separator {
+        float: left;
+        height: 25px;
+        border-left: solid 1px $color-silver;
+      }
+    }
+    .company {
+      position: relative;
+      &-detail {
+        text-shadow: 1px 2px 0px rgb(66, 77, 88);
+        margin-bottom: 30px;
+        strong {
+          text-shadow: none;
+          display: block;
+          margin-bottom: 10px;
+          color: $color-di-seria;
+        }
       }
     }
   }

@@ -13,34 +13,51 @@ body {
 button, select, input {
   outline: 0; }
 
-.page {
-  padding: 15px;
-  width: 100%;
-  max-width: 700px; }
-  .page .controls {
-    margin-bottom: 30px;
-    height: 30px; }
-    .page .controls__btn, .page .controls__select, .page .controls__text {
-      display: inline-block;
-      margin-right: 20px; }
-    .page .controls__btn {
-      margin-left: 20px; }
-    .page .controls__text {
-      width: 200px;
-      padding: 0 10px; }
-    .page .controls__separator {
-      height: 25px;
-      border-left: solid 1px #cccccc; }
-  .page .company {
-    position: relative; }
-    .page .company-detail {
-      text-shadow: 1px 2px 0px #424d58;
-      margin-bottom: 30px; }
-      .page .company-detail strong {
-        text-shadow: none;
-        display: block;
-        margin-bottom: 10px;
-        color: #f3b700; }
+#app {
+  padding: 15px; }
+  #app .page {
+    width: 100%;
+    max-width: 700px; }
+    #app .page .container {
+      position: relative;
+      float: left; }
+      #app .page .container-search {
+        margin-right: 20px;
+        overflow: hidden; }
+    #app .page .controls {
+      margin-bottom: 30px;
+      height: 30px; }
+      #app .page .controls__btn, #app .page .controls__select {
+        float: left;
+        margin-right: 20px; }
+      #app .page .controls__btn {
+        margin-left: 20px; }
+        #app .page .controls__btn-search {
+          position: absolute;
+          right: 0;
+          margin: 0;
+          height: 28px;
+          border-radius: 0; }
+      #app .page .controls__text {
+        float: left;
+        width: 150px;
+        padding: 0 10px; }
+        #app .page .controls__text-search {
+          padding-right: 60px; }
+      #app .page .controls__separator {
+        float: left;
+        height: 25px;
+        border-left: solid 1px #cccccc; }
+    #app .page .company {
+      position: relative; }
+      #app .page .company-detail {
+        text-shadow: 1px 2px 0px #424d58;
+        margin-bottom: 30px; }
+        #app .page .company-detail strong {
+          text-shadow: none;
+          display: block;
+          margin-bottom: 10px;
+          color: #f3b700; }
 
 select {
   display: block;

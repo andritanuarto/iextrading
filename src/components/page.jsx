@@ -106,7 +106,7 @@ class Page extends Component {
       <div className="page">
         <div className="controls">
           {!searchMode ? selects : <SearchBar />}
-          <span className="controls__separator" />
+          <div className="controls__separator" />
           {!searchMode ? searchStockSymbolBtn : null}
           {searchMode ? backToDefaultBtn : null}
           {errorMessage ? <div className="error">{errorMessage}</div> : null}

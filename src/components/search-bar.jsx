@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
+import InlineSVG from 'svg-inline-react';
+import { SVG } from '../svg';
 
 const SearchBar = (props) => {
   const [searchKeyword, setsearchKeyword] = useState({
@@ -14,22 +16,29 @@ const SearchBar = (props) => {
     }
   }
 
+  const searchBtnHandler = () => {
+    props.handleSearch(keywords.toLowerCase().trim());
+  }
+
   const handleKeywordChange = (e) => setsearchKeyword({
     ...searchKeyword,
     keywords: e.target.value
   })
 
   return (
-    <Fragment>
+    <div className="container container-search">
       <input
-        className="controls__text"
+        className="controls__text controls__text-search"
         onKeyDown={searchHandler}
         onChange={handleKeywordChange}
         type="text"
         value={keywords}
         placeholder="Search Symbol eg: aapl"
       />
-    </Fragment>
+      <button className="controls__btn controls__btn-search" onClick={searchBtnHandler}>
+        <InlineSVG src={SVG.SVG_SEARCH} raw width="15" height="15 " />
+      </button>
+    </div>
   );
 }
 
