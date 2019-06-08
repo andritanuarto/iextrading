@@ -38,3 +38,4 @@ Some additional features:
   - validations if the search symbol can't be found
 
 
+Please email me at andritanuarto@gmail.com if you have a problem running the application. Thank you.
