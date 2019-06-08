@@ -2,13 +2,13 @@
 
 1. you can git clone the repo https://github.com/andritanuarto/iextrading.git
 
-2. make sure you cd to `iextrading` and run `npm i` to install all dependencies
+2. make sure you cd to `iextrading` and run `npm i` to install all dependencies.
 
-3. Run ```npm run prod``` for production minified version
+3. Run ```npm run prod``` for production minified version it should open your browser window on `http://localhost:8080/`.
 
-4. Run ```npm run dev``` for non minified dev version
+  - Run ```npm run dev``` if you prefer seeing non-minified dev version.
 
-5. In case if the app doesn't render css. Run ```npm run build-sass-prod```
+  - Run ```npm run build-sass-prod``` In case the app doesn't render the css.
 
 
 ### Note
@@ -34,7 +34,7 @@ I also noticed this api end-point, i.e. `/stock/fb/company` doesn't have stock p
 Some additional features:
   - animation when the page is rendered
   - loader when doing the http request
-  - validations if the market list is not available the correspond symbols dropdown won't be shown
+  - validations if the market list is not available and the correspond symbols dropdown won't be shown
   - validations if the search symbol can't be found
 
 
