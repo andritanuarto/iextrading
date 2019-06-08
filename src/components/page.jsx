@@ -78,7 +78,7 @@ class Page extends Component {
         {
           companies.map(({symbol}) => {
             return (
-              <option selected={viewedCompany.symbol === symbol} key={symbol}>{symbol}</option>
+              <option key={symbol}>{symbol}</option>
             )
           })
         }
