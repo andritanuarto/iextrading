@@ -29,7 +29,7 @@ I noticed that when I worked at night the `/stock/market/list/mostactive` and `/
 
 User can also search stock symbol by pressing the `Search Stock Symbol` button. Once the button is clicked, the search bar will appear where the user can type the stock symbol to search.
 
-`Try for example `FB` or `fb` or `Fb` for Facebook.`
+Try for example `FB` or `fb` or `Fb` for Facebook.
 
 I also noticed this api end-point, i.e. `/stock/fb/company` doesn't have stock price info, but every symbol from `/stock/market/list/` has that information. My assumption on this functionality is to allow the user to search any symbol outside the market list. So user might see the Current Stock Price info marked as `N/A`.
 
